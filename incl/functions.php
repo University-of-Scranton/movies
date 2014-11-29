@@ -24,7 +24,16 @@ function calculate_age($dob){
 	$birthdate = new DateTime($dob);
 	$today = new DateTime($today);
 	$interval = $birthdate->diff($today);
-	echo $interval->format('%y years old');
+	return $interval->format('%y years old');
+}
+
+function movies_with_actor($aID){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT movies.mID,movies.title,movies.year_released,
+		movie_actors.movieID FROM movies,movie_actors WHERE
+		movie_actors.actorID = '" . $aID . "' AND movie_actors.movieID = movies.mID 
+	   ORDER BY movies.title");
+	return $db->resToArray($results);
 }
 
 function print_array($a) {
