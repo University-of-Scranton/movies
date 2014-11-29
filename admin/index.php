@@ -1,4 +1,5 @@
 <?php
+include("../incl/functions.php");
 include "includes/admin_head.php";
 ?>
 
@@ -18,6 +19,7 @@ include "includes/admin_head.php";
  					<h1><br/><a href="#" class="btn btn-theme">Add Studio</a></h1>
  				</div>		 				
 	 		</div>
+			<h3>Most Recently Added</h3>
 	 	</div><! --/container -->
 	 </div><! --/service -->
 

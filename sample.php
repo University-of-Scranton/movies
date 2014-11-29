@@ -12,15 +12,17 @@ require_once('incl/functions.php');
 	 			<p>The main body of the page goes here</p>
 	 			<p><b>Sample DB Connection</p></b>
 	 			<?php
-				$resImport = test_database();
-				result_dumper($resImport);
+				$testing = test_database();
+				var_dump($testing)
 		 		?>
 		 		<br>
 		 		<b>Testing below this line</b>
 		 		<p>----------------------</p>
 		 		<?php
-		 			echo "Movie 1 Title: " . $resImport[0]["title"];
+		 			echo "Movie 1 Title: " . $testing[0]["title"];
 		 		?>
+		 		<h3>Server Stats:</h3>
+		 		<h3>End of stats</h3>
 		 		<p>----------------------</p>
 		 		<b>Testing above this line</b>
 			</div><!--/MAIN CONTENT AREA-->

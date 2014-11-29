@@ -14,16 +14,22 @@ function test_database(){
 	return $db->resToArray($results);
 }
 
-function result_dumper($resImport){
-	var_dump($resImport);
+function get_actor_info($aID){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT * from actors WHERE aID = '" . $aID . "'");
+	return $db->resToArray($results);
 }
 
+function calculate_age($dob){
+	$birthdate = new DateTime($dob);
+	$today = new DateTime($today);
+	$interval = $birthdate->diff($today);
+	echo $interval->format('%y years old');
+}
 
-function print_array( $a ) {
-?>
-  <pre>
-  <?php var_dump( $a ); ?>
-  </pre>
-<?php
+function print_array($a) {
+  echo "<pre>";
+  var_dump($a);
+  echo "</pre>";
 }
 ?>
