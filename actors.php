@@ -1,10 +1,6 @@
 <?php 
 require_once('incl/header.php');
 require_once('incl/functions.php');
-$aID = 2;
-$selected_actor = get_actor_info($aID);
-$fullName = $selected_actor[0]["first_name"] . " " . $selected_actor[0]["last_name"];
-$dob = $selected_actor[0]["dob"];
 ?>
 
  <div class="container mtb">
@@ -12,44 +8,24 @@ $dob = $selected_actor[0]["dob"];
 	 	
 	 		<!--MAIN CONTENT AREA-->
 	 		<div class="col-lg-8">
-	 			<?php 
-	 			echo "<p><h3>";
-	 			echo $fullName;
-	 				#check if the guy has an oscar
-	 				if($selected_actor[0]["won_oscar"] == "1"){
-	 					echo "<img src='assets/img/oscar_icon.jpg'>";
-	 					echo "</h3>";
-	 					$age = calculate_age($dob);
-	 					echo "<b>Birthdate:</b> " . $dob . " <i>(" . $age .  ")</i></p>";
-	 				}
-	 				if($selected_actor[0]["won_oscar"] == "0"){
-	 					echo "</h3>";
-	 					$age = calculate_age($dob);
-	 					echo "<b>Birthdate:</b> " . $dob . " <i>(" . $age .  ")</i></p>";
-	 				}
-
-	 			?>
-	 			<div class="actor_bio">
-	 			<p><?php echo $selected_actor[0]["bio"]; ?></p>
-	 			</div>
-	 			<h3>Stars In: </h3>
-	 			<?php
-	 			$appears = movies_with_actor($aID);
-	 			$list_size = sizeof($appears);
-	 			?>
+	 			<h3>Actor List</h3>
 	 			<table>
 	 				<tr class="table_head">
-	 					<th>Movie</th>
-	 					<th>Year</th>
+	 					<th>Actor</th>
+	 					<th># Movies</th>
 	 				</tr>
-	 				<?php
+	 					<?php
+	 					$actor_list = full_actor_list();
+	 					$list_size = sizeof($actor_list);
 	 					for($i=0;$i<=$list_size;$i++){
+	 						$fullName = $actor_list[$i]["first_name"] . " " . $actor_list[$i]["last_name"];
 	 						echo "<tr>";
-	 						echo "<td>" . $appears[$i]["title"] . "</td>";
-	 						echo "<td>" . $appears[$i]["year_released"] . "</td>";
+	 						echo "<td><a href='actor_detail.php?aid=" . $actor_list[$i]['aID'] . "'> " . $fullName . "</a></td>";
+	 						echo "<td>" . $actor_list[$i]["title"] . "</td>";
 	 						echo "</tr>";
 	 					}
-	 				?>
+
+	 					?>
 	 			</table>
 			</div><!--/MAIN CONTENT AREA-->
 	 		
