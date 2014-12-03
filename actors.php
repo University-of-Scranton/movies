@@ -18,14 +18,12 @@ $size = sizeof($list);
 	 					<th># Movies</th>
 	 				</tr>
 	 				<?php
-	 				echo "<h1>Size: " . var_dump($list) . "</h1>";
 	 					for($i=0;$i<=$size-1;$i++){
 	 						$aID = $list[$i]["aID"];
 	 						$getCount = count_per_actor($aID);
-	 						var_dump($getCount);
 	 						$fullName = $list[$i]["first_name"] . " " . $list[$i]["last_name"];
 	 						echo "<tr>";
-	 						echo "<td>" . $aID . $fullName . "</td>";
+	 						echo "<td><a href=actor_detail.php?aid=" . $aID . ">" . $fullName . "</a></td>";
 	 						echo "<td>" . $getCount[0]["num"]. "</td>";
 	 						echo "</tr>";
 	 					}
