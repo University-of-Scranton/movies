@@ -38,14 +38,24 @@ function movies_with_actor($aID){
 
 function full_actor_list(){
 	$db = $GLOBALS['db'];
-	$results = $db->query("select actors.aID,actors.first_name,actors.last_name,movies.title 
+	$results = $db->query("select actors.aID,actors.first_name,actors.last_name
+		from actors ORDER BY actors.first_name");
+	return $db->resToArray($results);
+}
+
+
+function count_per_actor($aID){
+	$db = $GLOBALS['db'];
+	$results = $db->query("select COUNT(movie_actors.actorID) AS num 
 			from actors,movies 
 			join movie_actors 
 			where actors.aID=movie_actors.actorID 
 			and 
-			movie_actors.movieID=movies.mID");
+			movie_actors.movieID=movies.mID
+			and movie_actors.actorID = '" . $aID . "'");
 	return $db->resToArray($results);
 }
+
 
 function full_movie_list(){
 	$db = $GLOBALS['db'];

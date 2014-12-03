@@ -1,6 +1,9 @@
 <?php 
 require_once('incl/header.php');
 require_once('incl/functions.php');
+$list = full_actor_list();
+$size = sizeof($list);
+
 ?>
 
  <div class="container mtb">
@@ -14,18 +17,20 @@ require_once('incl/functions.php');
 	 					<th>Actor</th>
 	 					<th># Movies</th>
 	 				</tr>
-	 					<?php
-	 					$actor_list = full_actor_list();
-	 					$list_size = sizeof($actor_list);
-	 					for($i=0;$i<=$list_size;$i++){
-	 						$fullName = $actor_list[$i]["first_name"] . " " . $actor_list[$i]["last_name"];
+	 				<?php
+	 				echo "<h1>Size: " . var_dump($list) . "</h1>";
+	 					for($i=0;$i<=$size-1;$i++){
+	 						$aID = $list[$i]["aID"];
+	 						$getCount = count_per_actor($aID);
+	 						var_dump($getCount);
+	 						$fullName = $list[$i]["first_name"] . " " . $list[$i]["last_name"];
 	 						echo "<tr>";
-	 						echo "<td><a href='actor_detail.php?aid=" . $actor_list[$i]['aID'] . "'> " . $fullName . "</a></td>";
-	 						echo "<td>" . $actor_list[$i]["title"] . "</td>";
+	 						echo "<td>" . $aID . $fullName . "</td>";
+	 						echo "<td>" . $getCount[0]["num"]. "</td>";
 	 						echo "</tr>";
 	 					}
-
-	 					?>
+	 				?>
+	 				
 	 			</table>
 			</div><!--/MAIN CONTENT AREA-->
 	 		
