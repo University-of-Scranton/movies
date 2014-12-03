@@ -9,7 +9,9 @@
 		 		<div class="col-lg-4">
 		 			<h4>About</h4>
 		 			<div class="hline-w"></div>
-		 			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+		 			<p>This web page has been created for the subject MIT 315 with the professor Joe Casabona</p>
+		 			<p>Luis Victor Estébanez García</p>
+		 			<p>The University of Scranton</p>
 		 		</div>
 		 		<div class="col-lg-4">
 		 			<h4>Social Links</h4>
@@ -20,15 +22,6 @@
 		 				<a href="#"><i class="fa fa-twitter"></i></a>
 		 				<a href="#"><i class="fa fa-instagram"></i></a>
 		 				<a href="#"><i class="fa fa-tumblr"></i></a>
-		 			</p>
-		 		</div>
-		 		<div class="col-lg-4">
-		 			<h4>Our Bunker</h4>
-		 			<div class="hline-w"></div>
-		 			<p>
-		 				Some Ave, 987,<br/>
-		 				23890, New York,<br/>
-		 				United States.<br/>
 		 			</p>
 		 		</div>
 		 	

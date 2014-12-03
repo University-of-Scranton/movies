@@ -42,12 +42,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
+          <a class="navbar-brand" href="index.php">MOVICS! ;)</a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="about.php">ABOUT</a></li>
             <li><a href="contact.html">CONTACT</a></li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
@@ -69,7 +69,8 @@
 	<div id="blue">
 	    <div class="container">
 			<div class="row">
-				<h3>Single Post.</h3>
+				<h4><a href="movies.php">MOVIES</a> - <a href="actors.php">ACTORS</a></h4>
+
 			</div><!-- /row -->
 	    </div> <!-- /container -->
 	</div><!-- /blue -->
