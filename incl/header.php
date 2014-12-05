@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>SOLID - Bootstrap 3 Theme</title>
+    <title>A MOVIE DATABASE</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -42,20 +42,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
+          <a class="navbar-brand" href="index.php">DATABASE ABOUT MOVIES ON THE INTERNET</a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="actors.php">ACTORS</a></li>
+            <li><a href="movies.php">MOVIES</a></li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="single-post.html">SINGLE POST</a></li>
-                <li><a href="portfolio.html">PORTFOLIO</a></li>
-                <li><a href="single-project.html">SINGLE PROJECT</a></li>
+                <li><a href="admin.php">ADMIN</a></li>
               </ul>
             </li>
           </ul>
@@ -65,7 +62,7 @@
 
 	<!-- *****************************************************************************************************************
 	 BLUE WRAP
-	 ***************************************************************************************************************** -->
+	 ***************************************************************************************************************** 
 	<div id="blue">
 	    <div class="container">
 			<div class="row">

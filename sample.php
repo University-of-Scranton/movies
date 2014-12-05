@@ -1,11 +1,22 @@
-<?php require_once( 'incl/header.php' ); ?>
+<?php require_once( 'incl/header.php' );
+	require_once('incl/functions.php'); 
+	?>
 
  <div class="container mtb">
 	 	<div class="row">
 	 	
 	 		<! -- MAIN CONTENAT AREA -->
 	 		<div class="col-lg-8">
-	 			<p>The main body of the page goes here</p>
+	 			<p><?php
+					$recent = recently_added_movies();
+					print_array ($recent);
+					
+					$actor = recently_added_actors();
+					print_array ($actor);
+					
+					$count = get_movie_count(2);
+					print_array($count);
+				?></p>
 		 		
 			</div><! --/ MAIN CONTENT AREA -->
 	 		
