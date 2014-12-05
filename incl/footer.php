@@ -9,7 +9,12 @@
 		 		<div class="col-lg-4">
 		 			<h4>About</h4>
 		 			<div class="hline-w"></div>
-		 			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+		 			<p>The Interweb Movie Database houses the worlds smallest collection
+		 				of movies.</p>
+		 				<ul>
+		 					<h4>Hours of Operation:</h4>
+		 					<li style="color:white;">Sunday-Saturday 12am-12am</li>
+		 				</ul>
 		 		</div>
 		 		<div class="col-lg-4">
 		 			<h4>Social Links</h4>
@@ -25,10 +30,7 @@
 		 		<div class="col-lg-4">
 		 			<h4>Our Bunker</h4>
 		 			<div class="hline-w"></div>
-		 			<p>
-		 				Some Ave, 987,<br/>
-		 				23890, New York,<br/>
-		 				United States.<br/>
+		 			<p>127.0.0.1
 		 			</p>
 		 		</div>
 		 	
