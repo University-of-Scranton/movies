@@ -5,6 +5,7 @@ $aID = $_GET['aid'];
 $selected_actor = get_actor_info($aID);
 $fullName = $selected_actor[0]["first_name"] . " " . $selected_actor[0]["last_name"];
 $dob = $selected_actor[0]["dob"];
+$age = calculate_age($dob);
 ?>
 
  <div class="container mtb">
@@ -19,12 +20,10 @@ $dob = $selected_actor[0]["dob"];
 	 				if($selected_actor[0]["won_oscar"] == "1"){
 	 					echo "<img src='assets/img/oscar_icon.jpg'>";
 	 					echo "</h3>";
-	 					$age = calculate_age($dob);
 	 					echo "<b>Birthdate:</b> " . $dob . " <i>(" . $age .  ")</i></p>";
 	 				}
 	 				if($selected_actor[0]["won_oscar"] == "0"){
 	 					echo "</h3>";
-	 					$age = calculate_age($dob);
 	 					echo "<b>Birthdate:</b> " . $dob . " <i>(" . $age .  ")</i></p>";
 	 				}
 
@@ -37,20 +36,14 @@ $dob = $selected_actor[0]["dob"];
 	 			$appears = movies_with_actor($aID);
 	 			$list_size = sizeof($appears);
 	 			?>
-	 			<table>
-	 				<tr class="table_head">
-	 					<th>Movie</th>
-	 					<th>Year</th>
-	 				</tr>
 	 				<?php
-	 					for($i=0;$i<=$list_size;$i++){
-	 						echo "<tr>";
-	 						echo "<td>" . $appears[$i]["title"] . "</td>";
-	 						echo "<td>" . $appears[$i]["year_released"] . "</td>";
-	 						echo "</tr>";
+	 					for($i=0;$i<=$list_size-1;$i++){
+	 						$movie = $appears[$i]["title"];
+	 						$year = $appears[$i]["year_released"];
+	 						$mid = $appears[$i]["mID"];
+	 						echo "<p><a href='movie_detail.php?mid=" . $mid . "'>" . $movie . "<i>(" . $year . "</a>)</i></p>";
 	 					}
 	 				?>
-	 			</table>
 			</div><!--/MAIN CONTENT AREA-->
 	 		
 	 		
