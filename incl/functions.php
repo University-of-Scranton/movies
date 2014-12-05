@@ -43,6 +43,12 @@ function full_actor_list(){
 	return $db->resToArray($results);
 }
 
+function full_studio_list(){
+	$db = $GLOBALS['db'];
+	$results = $db->query("select studio.sID,studio.name,studio.city,studio.state from studio");
+	return $db->resToArray($results);
+}
+
 
 function count_per_actor($aID){
 	$db = $GLOBALS['db'];
