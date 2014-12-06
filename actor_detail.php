@@ -47,8 +47,8 @@ $age = calculate_age($dob);
 			</div><!--/MAIN CONTENT AREA-->
 	 		
 	 		
-
-	 	</div><!--row-->
+div
+	 	</><!--row-->
 	 </div><!--container -->
 
 <?php require_once( 'incl/footer.php' ); ?>
