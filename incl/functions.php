@@ -75,6 +75,13 @@ function get_movie_info($mID){
 	return $db->resToArray($results);
 }
 
+function studio_makes_movie($mID){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT studio.name AS name from studio join movies
+		on movies.studioID=studio.sID where movies.mID='" . $mID . "'");
+	return $db->resToArray($results);
+}
+
 function print_array($a) {
   echo "<pre>";
   var_dump($a);
