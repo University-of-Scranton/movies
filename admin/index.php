@@ -1,6 +1,6 @@
 <?php
 include("../incl/functions.php");
-include "includes/admin_head.php";
+include("incl/admin_head.php");
 ?>
 
 	 <div id="service">
