@@ -14,6 +14,12 @@ function test_database(){
 	return $db->resToArray($results);
 }
 
+function get_genres(){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT gID,name from genre");
+	return $db->resToArray($results);
+}
+
 function get_actor_info($aID){
 	$db = $GLOBALS['db'];
 	$results = $db->query("SELECT * from actors WHERE aID = '" . $aID . "'");
@@ -80,6 +86,34 @@ function studio_makes_movie($mID){
 	$results = $db->query("SELECT studio.name AS name from studio join movies
 		on movies.studioID=studio.sID where movies.mID='" . $mID . "'");
 	return $db->resToArray($results);
+}
+
+function add_movie($FORM_DATA){
+	$db = $GLOBALS['db'];
+	extract($FORM_DATA);
+	$db->query("INSERT INTO movies
+		(title,year_released,synopsis,was_novel,studioID)
+		VALUES ('".$title."','".$year."','".$synopsis."','".$novel."','".$studio."')");
+
+	$generated_mid = $db->query("SELECT mID from movies ORDER BY mID DESC LIMIT 1");
+	$generated_mid = $db->resToArray($generated_mid);
+	$generated_mid = $generated_mid[0]["mID"];
+
+	foreach($select_actor as $thisactor){
+		$db->query("INSERT INTO movie_actors (maID,movieID,actorID)
+		VALUES (NULL,'".$generated_mid."','".$thisactor."')");
+	}
+
+	foreach($genre as $thisgenre){
+		$db->query("INSERT INTO movie_genres (mgID,movieID,genreID)
+		VALUES (NULL, '".$generated_mid."','".$thisgenre."')");
+	}
+
+	$successful = $db->query("SELECT movies.title AS title from movies where mID = '".$generated_mid."'");
+	$successful = $db->resToArray($successful);
+	$successful = $successful[0]["title"];
+	return $successful;
+
 }
 
 function print_array($a) {
