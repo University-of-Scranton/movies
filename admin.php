@@ -115,7 +115,7 @@
 </span>
 
 <span class = "movieactor">
-<h2>Add Actor to Movie</h2>
+<h2>Add Actor to Movie (Not Working)</h2>
 <form method="post" name="add_movieactor">
 <div>
 		<select name="actor">
