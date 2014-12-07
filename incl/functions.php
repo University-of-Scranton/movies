@@ -36,7 +36,7 @@ function recently_added_actors() {
 //Gets a list of all the actors and categorizes them in alpha order by first name
 function get_actors(){
 	$db= $GLOBALS['db'];
-	$results = $db ->query("SELECT first_name, last_name, dob FROM actors ORDER BY first_name");
+	$results = $db ->query("SELECT aID, first_name, last_name, dob FROM actors ORDER BY first_name");
 	return $db->resToArray($results);
 }
 
@@ -69,6 +69,14 @@ function get_movie_actors($movieID){
 	return $db->resToArray($query);
 }*/
 
+//gets studio that made a movie
+function get_studio($sID) {
+$db= $GLOBALS['db'];
+$results = $db ->query("SELECT * FROM studio
+						WHERE studio.sID = $sID");
+return $db->resToArray($results);
+}
+
 //gets movies an actor has starred in
 function get_movies($aID) {
 	$db= $GLOBALS['db'];
@@ -97,7 +105,7 @@ function get_movie_count($aID){
 			WHERE actors.aID=movie_actors.actorID 
 			AND
 			movie_actors.movieID=movies.mID
-			and movie_actors.actorID = '$aID'");
+			and movie_actors.actorID = '" . $aID . "'");
 	return $db->resToArray($results);
 }
 
@@ -122,6 +130,12 @@ function get_actor_info($table='actors'){
 }
 
 function get_studio_info($table='studio'){
+	$db= $GLOBALS['db'];
+	$results= $db->query("SELECT * FROM $table");
+	return $db->resToArray($results);
+}
+
+function get_movieactor_info($table='movie_actors'){
 	$db= $GLOBALS['db'];
 	$results= $db->query("SELECT * FROM $table");
 	return $db->resToArray($results);
@@ -193,4 +207,25 @@ function add_studio($info){
 	echo "<h3>$name submitted!</h3>"; 
 }
 
+function check_movieactor($name){
+	$movieactors= get_movieactor_info(); //gets all actors from database
+	
+	foreach($movieactors as $movieactor){ //checks all cigars to check for duplicates
+		if(strtolower($name) == strtolower($movieactor['maID'])){
+			return true;
+		}
+	}
+	
+	return false;
+	
+}	
+
+function add_movieactor($info){
+	$db= $GLOBALS['db']; //grab database variable
+	extract($info);
+	$timestamp= $db->get_mysql_timestamp();
+	$submitted= $db->query("INSERT INTO movie_actors VALUES('', '$movieID', '$actorID', '$timestamp')");
+
+	echo "<h3> submitted!</h3>"; 
+}
 ?>

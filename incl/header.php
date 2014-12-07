@@ -47,14 +47,10 @@
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
             <li><a href="index.php">HOME</a></li>
-            <li><a href="actors.php">ACTORS</a></li>
-            <li><a href="movies.php">MOVIES</a></li>
-            <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="admin.php">ADMIN</a></li>
-              </ul>
-            </li>
+            <li><a href="actor_list.php">ACTORS</a></li>
+            <li><a href="movies_list.php">MOVIES</a></li>
+			<li><a href="admin.php">ADMIN</a></li>
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>

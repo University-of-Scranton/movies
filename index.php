@@ -18,106 +18,26 @@
 	 		<! -- SIDEBAR -->
 	 		<div class="col-lg-4">
 		 		<h2>Recently Added Content</h2>
-				<?php 
-				if(isset($_POST['submit'])){ //checks if a form named submit has been added
-				if(!check_movie($_POST['title'])){ //checks the name part of the form to see if it already exists
-					add_movie($_POST);
-				}else{
-					print "<h3>That movie already exists in the DB</h3>";
-				}
-			}
-			
-				if(isset($_POST['submit_actor'])){ //checks if a form named submit has been added
-				if(!check_actor($_POST['last_name'])){ //checks the name part of the form to see if it already exists
-					add_actor($_POST);
-				}else{
-					print "<h3>That actor already exists in the DB</h3>";
-				}
-			}
-			
-			if(isset($_POST['submit_studio'])){ //checks if a form named submit has been added
-				if(!check_studio($_POST['name'])){ //checks the name part of the form to see if it already exists
-					add_studio($_POST);
-				}else{
-					print "<h3>That studio already exists in the DB</h3>";
-				}
-			}
-
-			?>
-			<div>
-			<form method="post" name="add_movie">
-				<div>
-					<label for="title">Title</label> <input type="text" name="title" placeholder="Title" />
-				</div>
-				<div>
-					<label for="year_released">Year Released</label> <input type="date" name="year_released" placeholder="" />
-				</div>				
-				<div>
-					<label for="synopsis">Synopsis</label> <input type="textarea" name="synopsis" placeholder="Enter a description" />
-				</div>
-				<div>
-					<label for="was_novel">Based From a Novel?</label> <input type="checkbox" name="was_novel" placeholder="" />Yes
-				</div>
-				<div>
-					<select name="studioID">
-						<option value="0">Select a Studio</option>
-						<?php
-							$studio= get_info('studio');
-							foreach($studio as $s){
-								print '\t<option value="'.$s['sID']. '">'.$s['name'] .'</option>\n';
-							}
-						?>
-					</select>
-				</div>
-				<div>
-					<input type="submit" name="submit" value="Submit" />
-				</div>
-			</form>
-			</div>
-</p>
-
-		<div>
-			<form method="post" name="add_actor">
-				<div>
-					<label for="first_name">First Name</label> <input type="text" name="first_name" placeholder="George" />
-				</div>
-				<div>
-					<label for="last_name">Last Name</label> <input type="text" name="last_name" placeholder="Clooney" />
-				</div>				
-				<div>
-					<label for="bio">Biography</label> <input type="textarea" name="bio" placeholder="Enter text" />
-				</div>
-				<div>
-					<label for="dob">Date of Birth</label> <input type="date" name="dob" placeholder="" />
-				</div>
-				<div>
-					<label for="won_oscar">Any Oscars?</label> <input type="text" name="won_oscar" placeholder="" />
-				</div>
-				<div>
-					<input type="submit" name="submit_actor" value="SUBMIT" />
-				</div>
-			</form>
-			</div>
-			
-			<div>
-			<form method="post" name="add_studio">
-				<div>
-					<label for="name">Name</label> <input type="text" name="name" placeholder="e.g Universal" />
-				</div>
-				<div>
-					<label for="city">City</label> <input type="text" name="city" placeholder="e.g Philadelphia" />
-				</div>				
-				<div>
-					<label for="state">State</label> <input type="text" name="state" placeholder="e.g PA" />
-				</div>
-				<div>
-					<label for="zip">Zip Code</label> <input type="text" name="zip" placeholder="10-digit zip code" />
-				</div>
-				<div>
-					<input type="submit" name="submit_studio" value="SUBMIT" />
-				</div>
-			</form>
-			</div>
+				<h3>Movies:</h3>
+					<?php
+					$movies = recently_added_movies();
+					$size_movies = sizeof($movies);
+					
+					for ($i=0; $i<$size_movies; $i++) {
+						echo "<p>" . "<a href=movie_single.php?id=" . $movies[$i] ["mID"] . ">" . $movies[$i]["title"] . "  (" . $movies[$i]["year_released"] .  ")" . "</a>"  . "</p>";
+					}
+					?>
+					
+				<h3>Actors:</h3>
+					<?php
+					$actors = recently_added_actors();
+					$size_actors = sizeof($actors);
+					
+					for ($i=0; $i<$size_actors; $i++) {
+						echo "<p>" . "<a href=actor_single.php?id=" . $actors[$i] ["aID"] . ">" . $actors[$i]["first_name"] . " " . $actors[$i]["last_name"] . "</a>"  . "</p>";
+					}
+					?>
+				
 	 		</div><!-- /SIDEBAR -->
 	 	</div><! --/row -->
 	 </div><! --/container -->
