@@ -3,7 +3,6 @@ require_once('incl/header.php');
 require_once('incl/functions.php');
 $list = full_actor_list();
 $size = sizeof($list);
-
 ?>
 
  <div class="container mtb">
@@ -19,6 +18,7 @@ $size = sizeof($list);
 	 				</tr>
 	 				<?php
 	 					for($i=0;$i<=$size-1;$i++){
+	 						var_dump($list);
 	 						$aID = $list[$i]["aID"];
 	 						$getCount = count_per_actor($aID);
 	 						$fullName = $list[$i]["first_name"] . " " . $list[$i]["last_name"];
