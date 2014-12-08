@@ -14,6 +14,7 @@ $studio_size = sizeof($studio_list);
 	 	<div class="row">
 	 		<div class="col-lg-8">
 	 			<?php
+	 				$novel = '0';
 	 					if(isset($_POST["submit"])){
 	 						extract($_POST);
 	 							if($novel == "on"){
@@ -31,8 +32,6 @@ $studio_size = sizeof($studio_list);
 	 								"select_actor" => $select_actor,
 	 								"genre" => $genre
 	 							);
-	 						var_dump($FORM_DATA);
-	 						echo "<br>";
 	 						$run_insert = add_movie($FORM_DATA);
 	 						echo "<p>".$run_insert." added to database!</p>";
 	 						
