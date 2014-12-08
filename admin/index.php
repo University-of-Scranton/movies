@@ -12,13 +12,14 @@ include("incl/admin_head.php");
  				</div>
  				<div class="col-md-4">
  					<img src="../assets/img/actor_icon.png" class="fa fa-flask"></img>
- 					<h1><br/><a href="#" class="btn btn-theme">Add Actor</a></h1>
+ 					<h1><br/><a href="addactors.php" class="btn btn-theme">Add Actor</a></h1>
  				</div>
  				<div class="col-md-4">
  					<img src="../assets/img/take.png" width="128px" height="128px" "class="fa fa-trophy"></img>
- 					<h1><br/><a href="#" class="btn btn-theme">Add Studio</a></h1>
+ 					<h1><br/><a href="addstudio.php" class="btn btn-theme">Add Studio</a></h1>
  				</div>		 				
 	 		</div>
+	 		<h5 style="color:#428bca;">Already added a movie? Add actors <a style="color:red;" href="actormovie.php">here</a></h5>
 			<h3>Most Recently Added</h3>
 	 	</div><! --/container -->
 	 </div><! --/service -->
