@@ -48,14 +48,15 @@
           <ul class="nav navbar-nav">
             <li><a href="index.php">HOME</a></li>
             <li><a href="about.php">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="contact.php">CONTACT</a></li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="single-post.html">SINGLE POST</a></li>
-                <li><a href="portfolio.html">PORTFOLIO</a></li>
-                <li><a href="single-project.html">SINGLE PROJECT</a></li>
+                <li><a href="index.php">HOME</a></li>
+                <li><a href="about.php">ABOUT</a></li>
+                <li><a href="contact.php">CONTACT</a></li>
+                <li><a href="actors.php">ACTORS</a></li>
+                <li><a href="movies.php">MOVIES</a></li>
               </ul>
             </li>
           </ul>
@@ -69,7 +70,7 @@
 	<div id="blue">
 	    <div class="container">
 			<div class="row">
-				<h4><a href="movies.php">MOVIES</a> - <a href="actors.php">ACTORS</a></h4>
+				<h4><a href="movies.php">MOVIES</a> - <a href="actors.php">ACTORS</a> - <a href="Add.php">ADD</a></h4>
 
 			</div><!-- /row -->
 	    </div> <!-- /container -->

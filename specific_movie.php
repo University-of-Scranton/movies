@@ -1,10 +1,8 @@
 <?php require_once( 'incl/header.php' ); ?>
 <?php require_once( 'incl/functions.php' ); ?>
 <?php
-$ID=$_GET["id"];
-echo ($_GET["id"]);
-$actor_info=get_actor_information($ID);//OJO AQUI TENGO QUE CAMBIARLO PARA QUE VAYA AL ACTOR QUE YO QUIERO!!!
-$movies_by_actor=get_movie_by_actor($ID);
+$movie_info=get_movie_information(1);
+$actors_by_movie=get_actors_by_movie(1);
 ?>
 
  <div class="container mtb">
@@ -13,7 +11,7 @@ $movies_by_actor=get_movie_by_actor($ID);
 	 		<! -- MAIN CONTENAT AREA -->
 	 		<div class="col-lg-8">
 	 		<h2>
-	 		<?php echo($actor_info[0]["first_name"]);echo(' ');echo($actor_info[0]["last_name"]);
+	 		<?php echo($movie_info[0]["title"]); echo(' '); echo(' - ');echo(' ');echo($movie_info[0]["year_released"]);
 	 		?>
 	 		</h2>	
 	 			<p>
@@ -21,36 +19,38 @@ $movies_by_actor=get_movie_by_actor($ID);
 					<table width="100%" border="0" ccellpadding="10px">
 
 					
-					<tr colspan="2"><center><h4>Bio</h4></center>
+					<tr colspan="2"><center><h4>Synopsis</h4></center>
 					</tr>
 					<tr>
-					<?php echo($actor_info[0]["bio"]);
+					<?php echo($movie_info[0]["synopsis"]);
 					?>
 					</tr>
 
-					<tr colspan="2"><center><h4>Date of Birth</h4></center>
-					</tr>
-					<tr>
-					<?php echo($actor_info[0]["dob"]);
-					?>
-					</tr>
-					
-					<tr colspan="2"><center><h4>Won an Oscar</h4></center>
+					<tr colspan="2"><center><h4>Studio</h4></center>
 					</tr>
 					<tr>
 					<?php
+					$studio_info=get_studio_information($movie_info[0]["studioID"]);
+					echo($studio_info[0]["name"]);
+					?>
+					</tr>
+					
+					<tr colspan="2"><center><h4>Based on a novel</h4></center>
+					</tr>
+					<tr>
+
+					<?php
 					if($actor_info[0]["dob"]=1){
-						echo('YES');
+						echo('YES, and the novel was better');
 					}else{
-						echo('Still trying to get one');
+						echo('No');
 					}
 					?>
 					</tr>
 
-					<tr colspan="2"><center><h4>Movies</h4></center>
-					</tr>
+					<tr colspan="2"><center><h4>Staring</h4></center>
 					<?php
-					foreach($movies_by_actor as $key => $value)/*para cada celda del array, hacer lo siguiente, y llamar al asociador key y a cada celda value*/
+					foreach($actors_by_movie as $key => $value)/*para cada celda del array, hacer lo siguiente, y llamar al asociador key y a cada celda value*/
 					{
 					?>
 								        <tr>  <!–iniciamos la creacion de una fila–>
@@ -68,6 +68,8 @@ $movies_by_actor=get_movie_by_actor($ID);
 					<?php
 					}
 					?>
+
+					</tr>
 					</table>
 					
 					
@@ -78,8 +80,9 @@ $movies_by_actor=get_movie_by_actor($ID);
 	 		
 	 		<! -- SIDEBAR -->
 	 		<div class="col-lg-4">
+
 	 		</div><!-- /SIDEBAR -->
 	 	</div><! --/row -->
 	 </div><! --/container -->
-<?php print_r($actor_info);print_r($movies_by_actor); ?>
+<?php print_r($movie_info);print_r($actors_by_movies=get_actors_by_movie(1));?>
 <?php require_once( 'incl/footer.php' ); ?>

@@ -37,17 +37,19 @@
 								        <tr>  <!–iniciamos la creacion de una fila–>
 								            <?php foreach($datum as $key=>$value)/*para recorrer los arrays que hay dentro del array principal actores*/
 								            {
-
+								            $ID=$datum["aID"];
+								            $adress='specific_actor.php?id=$ID'
 							                ?>
 						            		<td><!– mostramos en las siguientes celdas de cada fila cada contenido–>
-						                    <center><?php echo $value?></center>
+						                    <center><?php echo "<a href=\"$adress\">$value</a>"?>
+						                     
+						                	</center>
 						            		</td>
 						                    
 						                    
 						            		<?php
 						                    }
 						                    
-						                    //$identification=get_ID_by_last_name($value);
 						                    $count=get_movie_count_by_actor($datum["aID"]); 
 								            ?>
 								            <td><!– mostramos en las siguientes celdas de cada fila cada contenido–>
