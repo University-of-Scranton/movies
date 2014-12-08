@@ -28,7 +28,7 @@ function get_actor_info($aID){
 
 function calculate_age($dob){
 	$birthdate = new DateTime($dob);
-	$today = new DateTime($today); #I don't know why this works.
+	$today = new DateTime();
 	$interval = $birthdate->diff($today);
 	return $interval->format('%y years old');
 }
@@ -88,33 +88,72 @@ function studio_makes_movie($mID){
 	return $db->resToArray($results);
 }
 
-function add_movie($FORM_DATA){
-	$db = $GLOBALS['db'];
+function add_studio($FORM_DATA){
 	extract($FORM_DATA);
+	$db = $GLOBALS['db'];
+	$db->query("INSERT INTO studio (sID,name,city,state,zip)
+		VALUES(NULL,'".$name."','".$city."','".$state."','".$zip."')");
+}
+
+function add_actor($FORM_DATA){
+	extract($FORM_DATA);
+	$db = $GLOBALS['db'];
+	$db -> query("INSERT INTO actors (aID,first_name,last_name,bio,dob,won_oscar)
+		VALUES (NULL,'".$firstname."','".$lastname."','".$bio."','".$dob."','".$oscar."')");
+
+	$aid = $db->query("SELECT aID from actors ORDER BY aID DESC LIMIT 1");
+	$aid = $db->resToArray($aid);
+	$aid = $aid[0]["aID"];
+
+	$successful = $db->query("SELECT actors.first_name AS first,actors.last_name AS last
+		from actors where aID = '" . $aid. "'");
+	$successful = $db->resToArray($successful);
+	$successful = $successful[0]["first"] . " " . $successful[0]["last"];
+	return $successful;
+}
+
+function add_movie($FORM_DATA){
+	extract($FORM_DATA);
+	$db = $GLOBALS['db'];
 	$db->query("INSERT INTO movies
 		(title,year_released,synopsis,was_novel,studioID)
 		VALUES ('".$title."','".$year."','".$synopsis."','".$novel."','".$studio."')");
 
+	#gets the movie id of the movie we just created.
+	#There is a SELECT LAST_INSERT_ID() command but always returns 0 in PHP, works fine in MySQL prompt.
 	$generated_mid = $db->query("SELECT mID from movies ORDER BY mID DESC LIMIT 1");
 	$generated_mid = $db->resToArray($generated_mid);
 	$generated_mid = $generated_mid[0]["mID"];
 
-	foreach($select_actor as $thisactor){
-		$db->query("INSERT INTO movie_actors (maID,movieID,actorID)
-		VALUES (NULL,'".$generated_mid."','".$thisactor."')");
-	}
+	#Add genres and actors to movie in one step.
+	add_actor_to_movie($select_actor,$generated_mid);
+	add_genre_to_movie($genre,$generated_mid);
 
-	foreach($genre as $thisgenre){
-		$db->query("INSERT INTO movie_genres (mgID,movieID,genreID)
-		VALUES (NULL, '".$generated_mid."','".$thisgenre."')");
-	}
-
+	#return the title of the movie back to the requesting page for confirmation.
 	$successful = $db->query("SELECT movies.title AS title from movies where mID = '".$generated_mid."'");
 	$successful = $db->resToArray($successful);
 	$successful = $successful[0]["title"];
 	return $successful;
 
 }
+
+function add_actor_to_movie($select_actor,$generated_mid){
+	$db = $GLOBALS['db'];
+	foreach($select_actor as $thisactor){
+		$db->query("INSERT INTO movie_actors (maID,movieID,actorID)
+		VALUES (NULL,'".$generated_mid."','".$thisactor."')");
+	}
+}
+
+function add_genre_to_movie($genre,$generated_mid){
+	$db = $GLOBALS['db'];
+	foreach($genre as $thisgenre){
+		$db->query("INSERT INTO movie_genres (mgID,movieID,genreID)
+		VALUES (NULL, '".$generated_mid."','".$thisgenre."')");
+	}
+}
+
+
 
 function print_array($a) {
   echo "<pre>";
