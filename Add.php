@@ -25,19 +25,24 @@
 						<br>
 
 						
-							<h3><center>Recently Added</center></h3>
+							<h3>Recently Added</h3>
 							<?php
-							foreach($recently_aded as $key => $value)/*para cada celda del array, hacer lo siguiente, y llamar al asociador key y a cada celda value*/
+							foreach($recently_aded as $key => $datum)/*para cada celda del array, hacer lo siguiente, y llamar al asociador key y a cada celda value*/
 							{
 							?>
 								        <tr>  <!–iniciamos la creacion de una fila–>
-								            <?php foreach($value as $key=>$value)/*para recorrer los arrays que hay dentro del array principal actores*/
+								            <?php foreach($datum as $key=>$value)/*para recorrer los arrays que hay dentro del array principal actores*/
 								            {
+								            	if(!($key=="mID")){
+								            $ID=$datum["mID"];
+
+								            $adress="specific_movie.php?id=$ID";
 							                ?>
 						            		<td><!– mostramos en las siguientes celdas de cada fila cada contenido–>
-						                    <center><?php echo $value?></center>
+						                    <center><?php echo "<a href=\"$adress\">$value</a>";?></center>
 						            		</td>
 						                    <?php
+						                		}
 						                    }
 								            ?>
 								        </tr>
@@ -57,6 +62,7 @@
 	 		
 	 		<! -- SIDEBAR -->
 	 		<div class="col-lg-4">
+	 			<img src="You.jpg" width="1000px">
 	 		</div><!-- /SIDEBAR -->
 	 	</div><! --/row -->
 	 </div><! --/container -->

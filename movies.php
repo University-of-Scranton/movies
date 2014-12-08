@@ -25,18 +25,24 @@
 
 					<tbody>  
 					<?php
-					foreach($actors as $key => $value)/*para cada celda del array, hacer lo siguiente, y llamar al asociador key y a cada celda value*/
+					foreach($actors as $key => $datum)/*para cada celda del array, hacer lo siguiente, y llamar al asociador key y a cada celda value*/
 					{
 					?>
 								        <tr>  <!–iniciamos la creacion de una fila–>
-								            <?php foreach($value as $key=>$value)/*para recorrer los arrays que hay dentro del array principal actores*/
+								            <?php foreach($datum as $key=>$value)/*para recorrer los arrays que hay dentro del array principal actores*/
 								            {
+								            	
+								            	if(!($key=="mID")){
+								            $ID=$datum["mID"];
+
+								            $adress="specific_movie.php?id=$ID";
 							                ?>
 						            		<td><!– mostramos en las siguientes celdas de cada fila cada contenido–>
-						                    <?php echo $value
-						                    ?>
-						            		</td>
+						                    <center><?php echo "<a href=\"$adress\">$value</a>";?>
+						                    </td>
+
 						                    <?php
+						                		}
 						                    }
 								            ?>
 								        </tr>
@@ -54,7 +60,8 @@
 	 		
 	 		<! -- SIDEBAR -->
 	 		<div class="col-lg-4">
-		 		<p>Sidebar (if any) goes here/</p>
+	 			<img src="You.jpg" width="1000px">
+
 	 		</div><!-- /SIDEBAR -->
 	 	</div><! --/row -->
 	 </div><! --/container -->

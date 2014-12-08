@@ -2,7 +2,6 @@
 <?php require_once( 'incl/functions.php' ); ?>
 <?php
 $ID=$_GET["id"];
-echo ($_GET["id"]);
 $actor_info=get_actor_information($ID);//OJO AQUI TENGO QUE CAMBIARLO PARA QUE VAYA AL ACTOR QUE YO QUIERO!!!
 $movies_by_actor=get_movie_by_actor($ID);
 ?>
@@ -81,5 +80,4 @@ $movies_by_actor=get_movie_by_actor($ID);
 	 		</div><!-- /SIDEBAR -->
 	 	</div><! --/row -->
 	 </div><! --/container -->
-<?php print_r($actor_info);print_r($movies_by_actor); ?>
 <?php require_once( 'incl/footer.php' ); ?>

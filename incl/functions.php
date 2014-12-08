@@ -20,7 +20,7 @@ function print_array($a) {
 
 function recently_aded(){
 	$db=$GLOBALS['db'];
-	$results= $db->query("SELECT title,timestamp FROM movies ORDER BY timestamp DESC LIMIT 5");
+	$results= $db->query("SELECT mID,title,timestamp FROM movies ORDER BY timestamp DESC LIMIT 5");
 	return $db->restoArray($results);
 }
 
@@ -70,7 +70,12 @@ function get_actors(){
 }
 function get_movies(){
 	$db=$GLOBALS['db'];
-	$results= $db->query("SELECT title,year_released FROM movies ORDER BY title");
+	$results= $db->query("SELECT mID,title,year_released FROM movies ORDER BY title");
+	return $db->restoArray($results);
+}
+function get_genres(){
+	$db=$GLOBALS['db'];
+	$results= $db->query("SELECT gID,name FROM genre ORDER BY name");
 	return $db->restoArray($results);
 }
 
@@ -92,8 +97,54 @@ function check_movie($title){
 	}
 	
 	return false;
+}
+function check_studio($name){
+	$studios= get_studios();
 	
+	foreach($studios as $studio){
+		if(strtolower($name) == strtolower($studio['name'])){
+			return true;
+		}
+	}
+	
+	return false;
+}
+function check_actor($name){
+	$actors= get_actors();
+	
+	foreach($actors as $actor){
+		if(strtolower($name) == strtolower($actor['first_name'])){
+			return true;
+		}
+	}
+	
+	return false;
 }	
+
+function add_actor($info){
+	$db= $GLOBALS['db'];
+	extract($info);
+	$timestamp= $db->get_mysql_timestamp();
+	$submitted= $db->query("INSERT INTO actors VALUES('', '$first_name', '$last_name', '$bio', '$dob', '$won_oscar', '$timestamp')");
+
+	echo "<h3>$first_name $last_name submitted!</h3>"; 
+}
+function add_actor_to_movie($info){
+	$db= $GLOBALS['db'];
+	extract($info);
+	$timestamp= $db->get_mysql_timestamp();
+	$submitted= $db->query("INSERT INTO movie_actors VALUES('', '$movie_ID', '$actor_ID', '$timestamp')");
+
+	echo "<h3>Actor with ID= $actor_ID added to the movie with ID= $movie_ID !</h3>"; 
+}
+function add_genre_to_movie($info){
+	$db= $GLOBALS['db'];
+	extract($info);
+	$timestamp= $db->get_mysql_timestamp();
+	$submitted= $db->query("INSERT INTO movie_genres VALUES('', '$movie_ID', '$genre_ID', '$timestamp')");
+
+	echo "<h3>Genre with ID= $genre_ID added to the movie with ID= $movie_ID !</h3>"; 
+}
 function add_movie($info){
 	$db= $GLOBALS['db'];
 	extract($info);
@@ -102,7 +153,14 @@ function add_movie($info){
 
 	echo "<h3>$title submitted!</h3>"; 
 }
+function add_studio($info){
+	$db= $GLOBALS['db'];
+	extract($info);
+	$timestamp= $db->get_mysql_timestamp();
+	$submitted= $db->query("INSERT INTO studio VALUES('', '$name', '$city', '$state', '$zip', '$timestamp')");
 
+	echo "<h3>$name submitted!</h3>"; 
+}
 
 
 

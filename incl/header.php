@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">MOVICS! ;)</a>
+          <a class="navbar-brand" href="index.php">MOVICS! ;)<img src="Picture.png" width="30px"></a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
@@ -57,6 +57,7 @@
                 <li><a href="contact.php">CONTACT</a></li>
                 <li><a href="actors.php">ACTORS</a></li>
                 <li><a href="movies.php">MOVIES</a></li>
+                <li><a href="Add.php">ADD</a></li>
               </ul>
             </li>
           </ul>

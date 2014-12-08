@@ -1,8 +1,9 @@
 <?php require_once( 'incl/header.php' ); ?>
 <?php require_once( 'incl/functions.php' ); ?>
 <?php
-$movie_info=get_movie_information(1);
-$actors_by_movie=get_actors_by_movie(1);
+$ID=$_GET["id"];
+$movie_info=get_movie_information($ID);
+$actors_by_movie=get_actors_by_movie($ID);
 ?>
 
  <div class="container mtb">
@@ -84,5 +85,5 @@ $actors_by_movie=get_actors_by_movie(1);
 	 		</div><!-- /SIDEBAR -->
 	 	</div><! --/row -->
 	 </div><! --/container -->
-<?php print_r($movie_info);print_r($actors_by_movies=get_actors_by_movie(1));?>
+
 <?php require_once( 'incl/footer.php' ); ?>

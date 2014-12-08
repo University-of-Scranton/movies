@@ -16,10 +16,7 @@
 							print "<h3>That movie already exists in the DataBase</h3>";
 						}
 					}
-					
-					//if(isset($_POST['maker_submit'])){
-					//	add_maker($_POST);
-					//}
+
 					?>	
 					<div>
 					<form method="post" name="add_movie">
@@ -58,7 +55,13 @@
 					
 					
 	 			</p>
-		 		
+	 			<h3><a href="Add_actor_to_movie.php">Add an actor to an existing movie</a></h3>
+	 			<h3><a href="Add_genre_to_movie.php">Add a genre to an existing movie</a></h3>
+
+
+
+
+
 			</div><! --/ MAIN CONTENT AREA -->
 	 		
 	 		
