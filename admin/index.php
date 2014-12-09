@@ -25,7 +25,7 @@ include("incl/admin_head.php");
 		 				$recent_movies = get_recent_movies();
 		 				foreach($recent_movies as $recent){
 		 					$mid = $recent['mID'];
-		 					echo "<li><a href='movie_detail.php?mid=" . $mid . "'> " . $recent["title"]. "</a></li>";
+		 					echo "<li><a href='../movie_detail.php?mid=" . $mid . "'> " . $recent["title"]. "</a></li>";
 		 				}
 		 			?>
 		 		</ul><br>
@@ -35,7 +35,7 @@ include("incl/admin_head.php");
 		 				$recent_actors = get_recent_actors();
 		 				foreach($recent_actors as $recent){
 		 					$aid = $recent['aID'];
-		 					echo "<li><a href='actor_detail.php?aid=" . $aid . "'> " . $recent["first_name"]." ".$recent["last_name"]."</a></li>";
+		 					echo "<li><a href='../actor_detail.php?aid=" . $aid . "'> " . $recent["first_name"]." ".$recent["last_name"]."</a></li>";
 		 				}
 		 				?>
 	 	</di<!--container -->

@@ -3,9 +3,9 @@ require_once('incl/header.php');
 require_once('incl/functions.php');
 $mID = $_GET['mid'];
 $selected_movie = get_movie_info($mID);
-var_dump($selected_movie);
 $studio = studio_makes_movie($mID);
 $studio = $studio[0]["name"];
+$actors_in = get_actors_in_movie($mID);
 ?>
 <div id="blue">
 	    <div class="container">
@@ -21,13 +21,19 @@ $studio = $studio[0]["name"];
 	 		<!--MAIN CONTENT AREA-->
 	 		<div class="col-lg-8">
 	 			<h1><?php echo $selected_movie[0]["title"] . " (" . $selected_movie[0]["year_released"] . ")"; ?></h1>
+	 			<h4><i><?php 		if($selected_movie[0]["was_novel"] == "1"){
+						echo "Based on a novel";
+					} ?></i></h4></br>
+				<p><b>Synopsis</p></b>
 				<p><?php echo $selected_movie[0]["synopsis"]; ?></p>
 				<?php
 
-					if($selected_movie[0]["was_novel"] == "1"){
-						echo "<p>Based on a novel</p>";
+		
+					echo "<p><b>Produced by</b> " . $studio . "</p><br>";
+					echo "<h3>Starring:</h3>";
+					foreach($actors_in as $character){
+						echo "<a href=actor_detail.php?aid=" . $character['aID'] . ">" . $character["first_name"] . " " . $character["last_name"] . "</a><br>";
 					}
-					echo "<p>Produced by " . $studio . "</p>";
 				?>
 			</div><!--/MAIN CONTENT AREA-->
 	 		

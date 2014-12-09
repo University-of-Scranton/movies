@@ -38,6 +38,17 @@ function get_actor_info($aID){
 	return $db->resToArray($results);
 }
 
+function get_actors_in_movie($mID){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT actors.aID, actors.first_name, actors.last_name, movie_actors.movieID,
+					movie_actors.actorID, movies.mID 
+					FROM actors, movies, movie_actors
+					WHERE movies.mID = '$mID' 
+					AND movie_actors.actorID = actors.aID 
+					AND movie_actors.movieID = movies.mID");
+	return $db->resToArray($results);
+}
+
 function calculate_age($dob){
 	$birthdate = new DateTime($dob);
 	$today = new DateTime();

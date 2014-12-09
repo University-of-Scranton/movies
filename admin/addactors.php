@@ -28,14 +28,14 @@ $months = array('January','February','March','April',
 	 							}
 	 						$dob = $birthyear."-".$birthmonth."-".$birthdate;
 	 						$FORM_DATA = array(
-	 								"firstname" => htmlspecialchars($firstname),
-	 								"lastname" => htmlspecialchars($lastname),
+	 								"firstname" => $firstname,
+	 								"lastname" =>  $lastname,
 	 								"oscar" => $oscar,
 	 								"dob" => $dob,
-	 								"bio" => htmlspecialchars($bio),
+	 								"bio" => $bio,
 	 							);
 	 					$run_insert = add_actor($FORM_DATA);
-	 					return $run_insert . " has been added!";
+	 					echo $run_insert . " has been added!";
 	 					}
 	 			?>
 	 			<h4>Add an Actor!</h4>
