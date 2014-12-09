@@ -7,9 +7,16 @@ var_dump($selected_movie);
 $studio = studio_makes_movie($mID);
 $studio = $studio[0]["name"];
 ?>
-
+<div id="blue">
+	    <div class="container">
+			<div class="row">
+				<h3><i><?php echo $selected_movie[0]["title"] ?></i></h3>
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /blue -->
  <div class="container mtb">
 	 	<div class="row">
+
 	 	
 	 		<!--MAIN CONTENT AREA-->
 	 		<div class="col-lg-8">

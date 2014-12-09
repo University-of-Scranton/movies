@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>Movie Administration</title>
+    <title>PHPMovieAdmin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -47,9 +47,11 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li><a href="index.php">HOME</a></li>
-            <li><a href="addmovies.php">Add Movie</a><li>
-
+            <li><a href="index.php">Home</a></li>
+            <li><a href="addmovies.php">Add Movie</a></li>
+            <li><a href="addactors.php">Add Actor</a></li>
+            <li><a href="addstudio.php">Add Studio</a></li>
+            <li><a href="../index.php">Back to Site</a></li>
               </ul>
             </li>
           </ul>

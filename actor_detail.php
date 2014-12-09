@@ -8,6 +8,14 @@ $dob = $selected_actor[0]["dob"];
 $age = calculate_age($dob);
 ?>
 
+	<div id="blue">
+	    <div class="container">
+			<div class="row">
+				<h3><?php echo $fullName; ?></h3>
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /blue -->
+
  <div class="container mtb">
 	 	<div class="row">
 	 	
@@ -47,8 +55,8 @@ $age = calculate_age($dob);
 			</div><!--/MAIN CONTENT AREA-->
 	 		
 	 		
-div
-	 	</><!--row-->
+
+	 	</div><!--row-->
 	 </div><!--container -->
 
 <?php require_once( 'incl/footer.php' ); ?>

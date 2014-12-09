@@ -14,6 +14,18 @@ function test_database(){
 	return $db->resToArray($results);
 }
 
+function get_recent_movies(){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT movies.mID,movies.title,movies.timestamp FROM movies ORDER BY timestamp DESC LIMIT 5");
+	return $db->resToArray($results);
+}
+
+function get_recent_actors(){
+	$db = $GLOBALS['db'];
+	$results = $db->query("SELECT actors.aID,actors.first_name,actors.last_name,actors.timestamp FROM actors ORDER BY timestamp DESC LIMIT 5");
+	return $db->resToArray($results);
+}
+
 function get_genres(){
 	$db = $GLOBALS['db'];
 	$results = $db->query("SELECT gID,name from genre");
@@ -96,8 +108,10 @@ function add_studio($FORM_DATA){
 }
 
 function add_actor($FORM_DATA){
-	extract($FORM_DATA);
 	$db = $GLOBALS['db'];
+
+	
+	extract($FORM_DATA);
 	$db -> query("INSERT INTO actors (aID,first_name,last_name,bio,dob,won_oscar)
 		VALUES (NULL,'".$firstname."','".$lastname."','".$bio."','".$dob."','".$oscar."')");
 
